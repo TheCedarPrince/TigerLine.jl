@@ -1,8 +1,15 @@
 
 """
-Base URL for TIGER/Line data with two parameters for year and layer.
+    base_tiger_url(year, layer)
+
+Returns the base URL for TIGER/Line data with two parameters for year and layer.
+
+```jldoctest
+julia> base_tiger_url(1234, "somelayer")
+"https://www2.census.gov/geo/tiger/TIGER1234/somelayer/"
+```
 """
-BASE_TIGER_URL = FormatExpr("https://www2.census.gov/geo/tiger/TIGER{}/{}/")
+base_tiger_url(year, layer) = "https://www2.census.gov/geo/tiger/TIGER$(year)/$(layer)/"
 
 # "https://www2.census.gov/geo/tiger/GENZ2018/shp/cb_2018_us_state_5m.zip"
 
