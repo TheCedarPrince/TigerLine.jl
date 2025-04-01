@@ -1,33 +1,32 @@
 """
-```julia
-download_tiger(output_dir; 
-    year = 2020, 
-    layer = "state"
-)
-```
+    download_tiger(output_dir; year, layer)
+
 Downloads TIGER/Line geographic data from the US Census Bureau for the specified year and geographic layer,
 saving the data as shapefiles.
+
+Valid arguments for `layer` are the keys of [`TIGER_DICT`](@ref).  Valid arguments for `year` are those years
+for which TIGER/Line data is available.
 
 ## Arguments
 - `output_dir::String`: The directory where downloaded files will be saved.
 
 ## Keyword Arguments
 - `year::Int=2020` (optional): The year of the TIGER/Line data to retrieve (e.g., 2020).
-- `layer::String="state"` (optional): The geographic layer of the data; look at `TIGER_DICT` for more options.
+- `layer::String="state"` (optional): The geographic layer of the data; must be a **key** of [`TIGER_DICT`](@ref).
 
 ## Returns
-#
-- This function does not return anything.
+Returns a vector of (absolute) file paths to the downloaded files.
 
 ## Example
-#
-```julia-repl
+```jldoctest
 julia> ?TIGER_DICT
 
     •  "county" (COUNTY) - County
     •  "state" (STATE) - State and Equivalent
 
 julia> download_tiger("./data", year=2020, layer="county")
+1-element Vector{String}:
+ "./data/tl_2020_us_county.zip"
 ```
 
 This will download county-level TIGER/Line data for 2020 and store the shapefiles in `./data`.
