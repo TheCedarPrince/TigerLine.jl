@@ -54,3 +54,6 @@ function get(year, layer)
     # We can add geo metadata to the dataframe easily following the GeoDataFrames approach.
     return Shapefile.Table(file_path)
 end
+
+# add a keyword argument version of the function
+get(; year = 2020, layer = "county") = get(year, layer)
